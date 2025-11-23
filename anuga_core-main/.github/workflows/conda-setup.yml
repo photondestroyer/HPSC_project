@@ -1,0 +1,89 @@
+name: github CI
+
+on:
+
+  pull_request:
+    branches:
+      - main
+      - develop
+      - develop_gpu
+
+  push:
+    branches:
+      - main
+      - develop
+      - develop_gpu
+
+jobs:
+  test_conda:
+    name: Example (${{ matrix.python-version }}, ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["ubuntu-latest", "macos-latest", "windows-latest"]
+
+        # 2025/06/19: 3.14 causes an error with conda_incubator/setup-miniconda@v3
+        # 2025/09/18: 3.8 macos and windows has problems with the new compilers. 
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v5
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniforge-version: latest      # Installs Miniforge instead of Miniconda
+          use-mamba: true                # Recommended for faster installs
+          python-version: ${{ matrix.python-version }}
+          auto-update-conda: true        # Auto-update conda or mamba
+          
+      - name: Install Our own environment
+        shell: bash -el {0}
+        run: |
+          conda env create --name anuga_env --file environments/environment_${{matrix.python-version}}.yml
+
+
+      - name: Install gcc compilers on Windows
+        if: runner.os == 'Windows'
+        shell: bash -el {0}
+        run: |
+           conda install -c conda-forge -n anuga_env libpython gcc_win-64 gxx_win-64
+
+           # conda install -c conda-forge -n anuga_env compilers
+           # The compilers package on windows which uses clang. We run into
+           # problems when testing anuga, so we skip it for now.
+
+      - name: Install clang with openmp compiler on macOS
+        if: runner.os == 'macOS'
+        shell: bash -el {0}
+        run: |
+           conda install -c conda-forge -n anuga_env compilers
+
+      - name: Install gxx with openmp compiler on Linux
+        if: runner.os == 'Linux'
+        shell: bash -el {0}
+        run: |
+           conda install -c conda-forge -n anuga_env compilers
+
+      - name: Problem on windows
+        # As of 2025/06/19, strange combination of mpi4py, the new compilers and pytest is
+        # causing a segmentation fault on Windows so we uninstall mpi4py
+        # This is a temporary workaround until the issue is resolved.
+        if: runner.os == 'Windows'
+        shell: bash -el {0}
+        run: |
+           conda uninstall -n anuga_env mpi4py
+           
+      - name: Install anuga package
+        shell: bash -el {0}
+        run: |
+          conda activate anuga_env
+          pip install --no-build-isolation -v .
+
+      - name: Test package
+        shell: bash -el {0}
+        run: |
+          conda activate anuga_env
+          cd sandpit
+          export OMP_NUM_THREADS=1
+          pytest -rs --pyargs anuga
+

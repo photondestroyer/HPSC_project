@@ -1,0 +1,221 @@
+# Editor temporary/working/backup files #
+#########################################
+
+.#*
+[#]*#
+*~
+*$
+*.csv
+*.pstat
+*.bak
+.idea/*
+*.kdev4
+*.org
+.project
+.pydevproject
+*.rej
+.settings/
+.*.sw[nop]
+.sw[nop]
+*.pstat
+*.c
+*.cpp
+*.tmp
+*.vim
+*.sww
+*.tif
+*.xml
+*.pts
+*.msh
+*.dem
+*.asc
+*.qgs
+*.aux
+*.bbl
+*.blg
+*.out
+*.toc
+*.npy
+*.html
+*.pickle
+tags
+
+# validation temp files #
+#########################
+validation_tests/case_studies/patong/boundaries
+validation_tests/case_studies/patong/gauges
+validation_tests/case_studies/patong/outputs
+validation_tests/case_studies/patong/polygons
+validation_tests/case_studies/patong/topographies
+validation_tests/case_studies/patong/*.png
+validation_tests/case_studies/patong/*.pdf
+
+validation_tests/case_studies/towradgi/*.pdf
+validation_tests/case_studies/towradgi/*.png
+validation_tests/case_studies/towradgi/robots.txt
+validation_tests/case_studies/towradgi/timing-*.md
+validation_tests/case_studies/towradgi/DEM_bridges
+validation_tests/case_studies/towradgi/Forcing
+validation_tests/case_studies/towradgi/Model
+validation_tests/case_studies/towradgi/PARTITIONS
+validation_tests/case_studies/towradgi/Validation
+
+validation_tests/case_studies/towradgi_simulation/*.pdf
+validation_tests/case_studies/towradgi_simulation/*.png
+validation_tests/case_studies/towradgi_simulation/robots.txt
+validation_tests/case_studies/towradgi_simulation/timing-*.md
+validation_tests/case_studies/towradgi_simulation/DEM_bridges
+validation_tests/case_studies/towradgi_simulation/Forcing
+validation_tests/case_studies/towradgi_simulation/Model
+validation_tests/case_studies/towradgi_simulation/PARTITIONS
+validation_tests/case_studies/towradgi_simulation/CHECKPOINTS
+validation_tests/case_studies/towradgi_simulation/Validation
+
+validation_tests/reports/validations_report_alg_DE1.pdf
+
+examples/cairns_excel/cairns_initialcond
+
+parameters.tex
+ch5.png
+ch7.png
+ch9.png
+Boundary.png
+Benchmark_2_Bathymetry.xya
+Benchmark_2_input.tms
+report.pdf
+LEFT_REACH.png
+MIDDLE_REACH.png
+RIGHT_REACH.png
+riverwall_points
+vel_t1_centroid.png
+vel_t1_vertex.png
+vel_t2_centroid.png
+vel_t2_vertex.png
+xvelocity_at_y05.png
+rmom_plot.png
+rvel_plot.png
+stage_plot.png
+saved_parameters.tex
+CENTRAL_CHANNEL.png
+xmom*.png
+xvel*.png
+ymom*.png
+Xmom*.png
+Xvel*.png
+x_velocity.png
+y_velocity.png
+depth_y.png
+depth_x.png
+Shoreline_position.png
+Shoreline_velocity.png
+figure_*.png
+cross_section_*.png
+stage*.png
+Stage*.png
+force.png
+Fluxes.png
+fig*.png
+perturbation_at_origin.png
+wave_atten.png
+
+# Compiled source #
+###################
+*.a
+*.com
+*.class
+*.exe
+*.l[ao]
+*.o
+*.py[ocd]
+*.so
+_configtest.c
+
+
+# Example tmp files #
+#####################
+
+examples/checkpointing/CHECKPOINTS
+
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.bz2
+*.bzip2
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.tbz2
+*.tgz
+*.zip
+
+
+# Visual Studio Code 
+.vscode
+
+# Python files #
+################
+#revision.py
+# setup.py working directory
+build
+# sphinx build directory
+doc/_build
+# cython files
+cythonize.dat
+# setup.py dist directory
+dist
+# Egg metadata
+*.egg-info
+# tox testing tool
+.tox
+# The shelf plugin uses this dir
+./.shelf
+MANIFEST
+# distutils configuration
+site.cfg
+# other temporary files
+.coverage
+.deps
+.libs
+
+# Paver generated files #
+#########################
+/release
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# Patches #
+###########
+*.patch
+*.diff
+
+# OS generated files #
+######################
+.directory
+.fseventsd
+.DS_Store*
+.gdb_history
+.VolumeIcon.icns
+ehthumbs.db
+Icon?
+Thumbs.db
+.ipynb_checkpoints
+
+# Documentation generated files #
+#################################
+doc/frontpage/build
+doc/source/generated
+
+# Things specific to this project #
+###################################
+anuga/__config__.py
+anuga/version.py
