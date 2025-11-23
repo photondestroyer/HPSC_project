@@ -1,0 +1,9 @@
+*.msh
+*.tif
+*.asc
+*.csv
+*.qmd
+.vscode/
+anuga-core-main/
+outputs/
+*.sww
