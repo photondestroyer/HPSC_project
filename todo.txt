@@ -1,2 +1,0 @@
-- use landlab to smoothen the DEM
-- precipitation time series at each hour as input (source of rainfall), at discretised points only or averages at the region need to figure out that shit) 

@@ -661,7 +661,12 @@ class Write_sww(Write_sts):
         else:
             outfile.createDimension('number_of_points', 3*number_of_volumes)
 
-        outfile.createDimension('number_of_timesteps', number_of_times)
+        # FIX: Use unlimited dimension if number_of_times is 0 or not known
+        # This allows dynamic storage during simulation without pre-allocating
+        if number_of_times == 0:
+            outfile.createDimension('number_of_timesteps', None)  # Unlimited
+        else:
+            outfile.createDimension('number_of_timesteps', number_of_times)
 
         # variable definitions
         outfile.createVariable('x', sww_precision, ('number_of_points',))
