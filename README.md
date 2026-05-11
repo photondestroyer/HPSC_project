@@ -1,4 +1,4 @@
-# ANUGA-ing: GPU-Accelerated Flood & Infiltration Simulation Workflow
+#  GPU-Accelerated Flood & Infiltration Simulation Workflow
 
 https://github.com/user-attachments/assets/a2144ac3-dcad-4405-a082-706699169132
 
